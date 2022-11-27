@@ -29,6 +29,7 @@ jobs:
           tags: loeken/vaultwarden:testing
           context: .
           no-cache: true
+          file: docker/amd64/Dockerfile.alpine
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: snyk/actions/docker@master
         env:
