@@ -26,7 +26,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: loeken/vaultwarden:testing
+          tags: loeken/vaultwarden:1.26.0-alpine,loeken/vaultwarden:testing
           context: .
           no-cache: true
           file: docker/amd64/Dockerfile.alpine
@@ -44,3 +44,4 @@ jobs:
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
