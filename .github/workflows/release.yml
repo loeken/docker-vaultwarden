@@ -2,6 +2,8 @@ name: release
 on:
   push:
     branches: [ main ]
+env:
+  version: 1.27.0-alpine
 jobs:
   release:
     runs-on: ubuntu-22.04
@@ -11,8 +13,8 @@ jobs:
         with:
           repository: dani-garcia/vaultwarden
 
-      - name: patch dockerfile
-        run: sed -i 's/alpine:3.16/alpine:3.17/g' Dockerfile
+      # - name: patch dockerfile
+      #  run: sed -i 's/alpine:3.16/alpine:3.17/g' Dockerfile
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -36,11 +38,11 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          image: loeken/vaultwarden:1.26.0-alpine
+          image: loeken/vaultwarden:${{ env.version }}
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: loeken/vaultwarden:1.26.0-alpine
+          image-ref: loeken/vaultwarden:${{ env.version }}
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
