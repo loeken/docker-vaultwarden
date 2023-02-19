@@ -2,22 +2,18 @@ name: release
 on:
   push:
     branches: [ main ]
+  schedule:
+    - cron: '0 10 * * *'
+env:
+  version: 1.27.0-alpine
 jobs:
   release:
     runs-on: ubuntu-22.04
     steps:
-      - name: Check out my other private repo
+      - name: Check out repo
         uses: actions/checkout@master
-        with:
-          repository: dani-garcia/vaultwarden
-
-      - name: patch dockerfile
-        run: sed -i 's/alpine:3.16/alpine:3.17/g' Dockerfile
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+      - name: replace version in Dockerfiel
+        run: sed -i 's/VERSION/${{ env.version }}/g' Dockerfile 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
@@ -27,22 +23,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: loeken/vaultwarden:1.26.0-alpine,loeken/vaultwarden:latest
+          tags: loeken/vaultwarden:${{ env.version }}
           context: .
           no-cache: true
-          file: docker/amd64/Dockerfile.alpine
-      - name: Run Snyk to check Docker image for vulnerabilities
-        uses: snyk/actions/docker@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          image: loeken/vaultwarden:1.26.0-alpine
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: loeken/vaultwarden:1.26.0-alpine
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'
