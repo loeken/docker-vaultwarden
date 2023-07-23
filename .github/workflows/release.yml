@@ -8,6 +8,9 @@ jobs:
   release:
     runs-on: ubuntu-22.04
     steps:
+
+      - name: Check out repo
+        uses: actions/checkout@master
       - name: Get version number
         run: |
           ls -la
@@ -16,8 +19,6 @@ jobs:
       - name: Use version number in next step
         run: |
           echo $VERSION # use the version number here
-      - name: Check out repo
-        uses: actions/checkout@master
       - name: replace version in Dockerfiel
         run: sed -i 's/VERSION/${{ env.VERSION }}/g' Dockerfile 
       - name: Login to Docker Hub
