@@ -33,3 +33,4 @@ jobs:
           tags: loeken/vaultwarden:${{ env.VERSION }}
           context: .
           no-cache: true
+
