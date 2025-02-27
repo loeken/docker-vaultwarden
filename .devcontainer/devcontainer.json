@@ -1,0 +1,14 @@
+{
+    "name": "docker-vaultwarden",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "docker-vaultwarden",
+    "workspaceFolder": "/app",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "oderwat.indent-rainbow",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}

@@ -1,0 +1,18 @@
+services:
+  docker-vaultwarden:
+    container_name: docker-vaultwarden
+    build:
+      context: .
+      dockerfile: ./deploy/docker/Dockerfile.dev
+    restart: "no"
+    env_file: .env
+    networks:
+      - docker-vaultwarden-network
+    volumes:
+      - ${HOME}/.config/gh:/home/vscode/.config/gh
+      - ${HOME}/.ssh:/home/vscode/.ssh
+      - ${HOME}/.zhistory:/home/vscode/.zhistory
+# Networks to be created to facilitate communication between containers
+networks:
+  docker-vaultwarden-network:
+    driver: bridge
