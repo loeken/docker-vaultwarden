@@ -3,10 +3,17 @@
   "prConcurrentLimit": 0,
   "branchConcurrentLimit": 0,
   "prHourlyLimit": 0,
-  "packageRules": [
+  "customManagers": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
+      "customType": "regex",
+      "fileMatch": [".github/workflows/release.yml"],
+      "matchStrings": [
+        "tags:\\s*dani-garcia/vaultwarden:(?<currentValue>[\\d\\.]+)",
+        "COMMIT_TAG=(?<currentValue>[\\d\\.]+)"
+      ],
+      "datasourceTemplate": "github-releases",
+      "packageNameTemplate": "loeken/vaultwarden",
+      "versioningTemplate": "semver"
     }
   ],
   "pinDigests": true
