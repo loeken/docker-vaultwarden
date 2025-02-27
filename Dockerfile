@@ -1,2 +1,2 @@
-FROM vaultwarden/server:1.33.1-alpine@sha256:4d9b08b4aab829935bfb8e31be7a10c582245567706b4e2afb74f5749c916ffb
+FROM vaultwarden/server:1.33.2-alpine@sha256:63cce7624f655f83ad5bab66ef62bc3e3327116b068704bfbbda5d0c1b3003be
 RUN apk upgrade
