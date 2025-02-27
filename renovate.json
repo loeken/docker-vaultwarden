@@ -12,8 +12,9 @@
         "COMMIT_TAG=(?<currentValue>[\\d\\.]+)"
       ],
       "datasourceTemplate": "github-releases",
-      "packageNameTemplate": "loeken/vaultwarden",
-      "versioningTemplate": "semver"
+      "packageNameTemplate": "dani-garcia/vaultwarden",
+      "versioningTemplate": "semver",
+      "replaceStringTemplate": "tags: loeken/vaultwarden:{{newValue}}-alpine\n            COMMIT_TAG={{newValue}}-alpine"
     }
   ],
   "pinDigests": true
