@@ -3,6 +3,7 @@
   "prConcurrentLimit": 0,
   "branchConcurrentLimit": 0,
   "prHourlyLimit": 0,
+  "pinDigests": true,
   "customManagers": [
     {
       "customType": "regex",
@@ -16,5 +17,14 @@
       "versioningTemplate": "{{newVersion}}-alpine"
     }
   ],
-  "pinDigests": true
+  "packageRules": [
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["vaultwarden/server"],
+      "versioning": "regex:^(?<version>[0-9.]+)-alpine$",
+      "replacePackageName": "dani-garcia/vaultwarden",
+      "datasource": "github-releases",
+      "extractVersion": "^v?(?<version>\\d+\\.\\d+\\.\\d+)$"
+    }
+  ]
 }
