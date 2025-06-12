@@ -7,6 +7,8 @@ on:
 
 jobs:
   renovate:
+    env:
+      LOG_LEVEL: debug
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
