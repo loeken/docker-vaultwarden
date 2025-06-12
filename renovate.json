@@ -21,10 +21,7 @@
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["vaultwarden/server"],
-      "versioning": "regex:^(?<version>[0-9.]+)-alpine$",
-      "replacePackageName": "dani-garcia/vaultwarden",
-      "datasource": "github-releases",
-      "extractVersion": "^v?(?<version>\\d+\\.\\d+\\.\\d+)$"
+      "versioning": "regex:^(?<version>[0-9.]+)-alpine$"
     }
   ]
 }
