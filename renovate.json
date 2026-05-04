@@ -4,6 +4,8 @@
   "branchConcurrentLimit": 0,
   "prHourlyLimit": 0,
   "pinDigests": true,
+  "automerge": true,
+  "automergeType": "pr",
   "customManagers": [
     {
       "customType": "regex",
