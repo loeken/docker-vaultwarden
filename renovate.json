@@ -6,6 +6,7 @@
   "pinDigests": true,
   "automerge": true,
   "automergeType": "pr",
+  "recreateClosed": true,
   "customManagers": [
     {
       "customType": "regex",
