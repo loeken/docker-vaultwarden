@@ -9,12 +9,11 @@
       "customType": "regex",
       "fileMatch": [".github/workflows/release.yml"],
       "matchStrings": [
-        "tags:\\s*loeken/vaultwarden:(?<currentValue>[\\d\\.]+)-alpine",
-        "COMMIT_TAG=(?<currentValue>[\\d\\.]+)-alpine"
+        "tags:\\s*loeken/vaultwarden:(?<currentValue>[\\d\\.]+)-alpine"
       ],
       "datasourceTemplate": "github-releases",
       "packageNameTemplate": "dani-garcia/vaultwarden",
-      "versioningTemplate": "{{newVersion}}-alpine"
+      "versioningTemplate": "semver"
     }
   ],
   "packageRules": [
