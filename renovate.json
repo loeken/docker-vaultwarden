@@ -5,7 +5,7 @@
   "prHourlyLimit": 0,
   "pinDigests": true,
   "automerge": true,
-  "automergeType": "pr",
+  "automergeType": "branch",
   "recreateClosed": true,
   "customManagers": [
     {
